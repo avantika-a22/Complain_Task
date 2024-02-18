@@ -1,0 +1,14 @@
+<div class="wrapper">
+  <mat-card class="card-body">
+    <mat-card-header class="card-header">
+      <mat-card-title>User Complain</mat-card-title>
+      <mat-card-subtitle *ngIf="step !==3">Step {{step}} of 2: {{step===1?'Select User':'Select Complain'}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider class="card-divider"/>
+    <mat-card-content>
+      <app-step1 *ngIf="step === 1" [setName]="setName" [increaseStep]="increaseStep"/>
+      <app-step2 *ngIf="step === 2" [setCategory]="setCategory" [increaseStep]="increaseStep"/>
+      <app-step3 *ngIf="step === 3" [complainCategory]="category"/>
+    </mat-card-content>
+  </mat-card>
+</div>

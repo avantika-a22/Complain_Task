@@ -1,0 +1,28 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <mat-label>User</mat-label>
+    <input
+      #input
+      type="text"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+      (input)="filter()"
+      (focus)="filter()"
+      required
+    />
+    @if (myControl.hasError('required')) {
+    <mat-error>You must select an option from the dropdown</mat-error>
+    }
+    <mat-autocomplete requireSelection #auto="matAutocomplete">
+      @for (option of filteredOptions; track option) {
+      <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+  <div class="button-wrapper">
+    <button mat-raised-button color="primary" [disabled]="!myControl.valid" (click)="buttonClick()">
+      Submit
+    </button>
+  </div>
+</form>
